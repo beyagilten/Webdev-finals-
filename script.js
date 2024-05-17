@@ -1,10 +1,20 @@
-function message() {
-    var name = document.getElementById("name").value;
-    var message = document.getElementById("message");
+function calculateBmi() {
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
 
-    if (name) {
-        message.innerHTML = `<p>Welcome Mr/Mrs ${name}</p>`;
+    const bmi = weight / (height * height);
+
+    let result;
+    if (bmi < 18.5) {
+        result = "Underweight";
+    } else if (bmi < 25) {
+        result = "Normal weight";
+    } else if (bmi < 30) {
+        result = "Overweight";
     } else {
-        message.innerHTML = "<p>Please enter your name</p>";
+        result = "Obese";
     }
+
+    document.getElementById("result").innerHTML =
+        `Your BMI is ${bmi.toFixed(2)}. You are ${result}.`;
 }
